@@ -1,0 +1,102 @@
+﻿@model weather.Models.WeatherModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Weather Calculator</h2>
+
+<form action="/Weather/Calculate" method="get">
+    <div>
+        <label>Enter Temperature:</label>
+        <input type="number" name="temperature" class="form-control" required />
+    </div>
+
+    <div>
+        <label>Select Scale:</label>
+        <select name="scale" class="form-control">
+            <option value="Celsius">Celsius</option>
+            <option value="Fahrenheit">Fahrenheit</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Convert</button>
+</form>
+
+@if (ViewBag.ConvertedTemperature != null)
+{
+    <h3>Converted Temperature: @ViewBag.ConvertedTemperature °@ViewBag.ConvertedScale</h3>
+}
+
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: linear-gradient(135deg, #a8edea, #fed6e3);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+    }
+
+    .container {
+        width: 400px;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+        text-align: center;
+    }
+
+    h2 {
+        color: #007bff;
+        margin-bottom: 20px;
+    }
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+    }
+
+    label {
+        font-weight: bold;
+        margin-bottom: 5px;
+        display: block;
+    }
+
+    input, select {
+        padding: 10px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 16px;
+    }
+
+    button {
+        background: #007bff;
+        color: white;
+        padding: 12px;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: 0.3s;
+    }
+
+        button:hover {
+            background: #0056b3;
+        }
+
+    .alert {
+        margin-top: 20px;
+        padding: 10px;
+        border-radius: 5px;
+        font-weight: bold;
+        background: #d4edda;
+        color: #155724;
+        border: 1px solid #c3e6cb;
+    }
+
+
+</style>
